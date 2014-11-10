@@ -16,7 +16,14 @@
             </ul>
           </div><!--/.nav-collapse -->
           <div class="pull-right margin-right: 15px;">
-            <span style="vertical-align: middle; padding-right: 10px;"><?php echo $this->session->userdata('usuario')->nome ?></span>
+            <span style="vertical-align: middle; padding-right: 10px;">
+            <?php
+            if($this->session->userdata('usuario')):
+              echo $this->session->userdata('usuario')->nome;
+            else:
+              $this->session->userdata('admin')->nome;
+            endif;
+               ?></span>
             <img src="http://placehold.it/40x40" class="img-circle" style="margin-top: 5px; margin-bottom: 5px;">
           </div>
     </div>
@@ -30,12 +37,9 @@
             <li class="active">
               <a href="index.html"><img src="<?php echo base_url() ?>assets/img/dashboard.png"> Dashboard</a>
             </li>
-            <li><a href="faq.html"><img src="<?php echo base_url() ?>assets/img/faq.png"> Listagem empresas</a></li>
-            <li><a href="<?php echo site_url('usuarios') ?>"><img src="<?php echo base_url() ?>assets/img/faq.png"> Cadastro empresas</a></li>
-            <li><a href="faq.html"><img src="<?php echo base_url() ?>assets/img/faq.png"> Listagem Admin</a></li>
-            <li><a href="faq.html"><img src="<?php echo base_url() ?>assets/img/faq.png"> Cadastro administradores</a></li>
-            <li><a href="faq.html"><img src="<?php echo base_url() ?>assets/img/faq.png"> Listagem de Notas</a></li>
-            <li><a href="<?php echo site_url('notas') ?>"><img src="<?php echo base_url() ?>assets/img/faq.png"> Upload de Notas</a></li>
+            <li><a href="<?php echo site_url('usuario') ?>"><img src="<?php echo base_url() ?>assets/img/faq.png"> Gerenciar empresas</a></li> 
+            <li><a href="<?php echo site_url('usuario') ?>"><img src="<?php echo base_url() ?>assets/img/faq.png"> Gerenicar Administradores</a></li>
+            <li><a href="<?php echo site_url('nota') ?>"><img src="<?php echo base_url() ?>assets/img/faq.png"> Upload de Notas</a></li>
              <?php if ($this->session->userdata('usuario')): ?>
                <li><a href="<?php echo site_url('site/sair') ?>"><img src="<?php echo base_url() ?>assets/img/sair.png"> Sair</a></li>
              <?php else:?>
